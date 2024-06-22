@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add Whatsapp Number</h2>
+
+<form method="POST" action="{{ url_for('admin.whatsapp.add') }}" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        {{ whatsappNumsForm.name(class_="form-control my-3", placeholder="Whatsapp Contact Name")}}
+    </div>
+    <div class="mb-3">
+        {{ whatsappNumsForm.number(class_="form-control my-3", placeholder="Whatsapp Number")}}
+    </div>
+    <div class="mb-3">
+        {{ whatsappNumsForm.submit(class_="btn btn-success", value="Add Whatsapp Number")}}
+    </div>
+
+</form>
+
+{% endblock %}

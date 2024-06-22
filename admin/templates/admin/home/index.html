@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Home Datas</h2>
+<a href="{{ url_for('admin.home.add') }}" class="btn btn-success mb-3">Add Home Data</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if home_datas %}
+            {% for home_data in home_datas %}
+            <tr>
+                <td>{{ home_data.id }}</td>
+                <td>{{ home_data.title }}</td>
+                <td> 
+                    <img src="{{ url_for('app.static', filename='uploads/' + home_data.image) }}" style="height: 50px;">
+                </td>
+                <td>{{ home_data.description }}</td>
+                <td>
+                    <a href="{{ url_for('admin.home.update', id=home_data.id) }}" class="btn btn-warning">Update</a>
+                    <a href="{{ url_for('admin.home.delete', id=home_data.id) }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

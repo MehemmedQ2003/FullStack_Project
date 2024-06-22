@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Contacts Information</h2>
+<a href="{{ url_for('admin.contact.add') }}" class="btn btn-success mb-3">Add Contact Information</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Country</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contact in contacts %}
+        <tr>
+            <td>{{ contact.id }}</td>
+            <td>{{ contact.title }}</td>
+            <td>{{ contact.country }}</td>
+            <td>{{ contact.city }}</td>
+            <td>{{ contact.address }}</td>
+            <td>{{ contact.phone }}</td>
+            <td>{{ contact.email }}</td>
+            <td>
+                <a href="{{ url_for('admin.contact.update', id=contact.id) }}" class="btn btn-warning">Update</a>
+                <a href="{{ url_for('admin.contact.delete', id=contact.id) }}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Update Contact Information</h2>
+
+<form method="POST" action="{{ url_for('admin.contact.update', id=contact.id) }}" enctype="multipart/form-data">
+
+    {{ ckeditor.load(pkg_type="full") }}
+
+    <div class="mb-3">
+        <input type="text" name="title" class="form-control" value="{{ contact.title }}" placeholder="Contact title">
+    </div>
+    <div class="mb-3">
+        <input type="text" name="country" class="form-control" value="{{ contact.country }}" placeholder="Contact country">
+    </div>
+    <div class="mb-3">
+        <input type="text" name="city" class="form-control" value="{{ contact.city }}" placeholder="Contact city">
+    </div>
+    <div class="mb-3">
+        <input type="text" name="address" class="form-control" value="{{ contact.address }}" placeholder="Contact address">
+    </div>
+    <div class="mb-3">
+        <input type="text" name="address_link" class="form-control" value="{{ contact.address_link }}" placeholder="Contact address link">
+    </div>
+    <div class="mb-3">
+        <input type="text" name="phone" class="form-control" value="{{ contact.phone }}" placeholder="Contact phone">
+    </div>
+    <div class="mb-3">
+        <input type="text" name="email" class="form-control" value="{{ contact.email }}" placeholder="Contact email">
+    </div>
+    <div class="mb-3">
+        <input type="submit" value="Update Contact Information" class="btn btn-warning">
+    </div>
+
+{% endblock %}

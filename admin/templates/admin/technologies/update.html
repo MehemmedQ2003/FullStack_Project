@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Update Technolgies Data</h2>
+
+<form method="POST" action="{{ url_for('admin.technologies.update', id=technology.id) }}" enctype="multipart/form-data">
+
+    {{ ckeditor.load(pkg_type="full") }}
+
+    <div class="mb-3">
+        <input type="text" name="title" value="{{ technology.title }}" class="form-control" placeholder="Technologies Data Title">
+    </div>
+    <div class="mb-3">
+        <input type="file" name="image" id="" class="form-control" placeholder="Technologies Data image">
+    </div>
+    <div class="mb-3">
+        <textarea name="content" id="" cols="30" rows="10">{{ technology.content }}</textarea>
+    </div>
+    <div class="mb-3">
+        <input type="submit" value="Update Technology Data" class="btn btn-warning">
+    </div>
+
+{% endblock %}

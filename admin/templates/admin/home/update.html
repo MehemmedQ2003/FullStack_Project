@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Update Home Data</h2>
+
+<form method="POST" action="{{ url_for('admin.home.update', id=home_data.id) }}" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <input type="text" name="title" class="form-control" value="{{ home_data.title }}">
+    </div>
+    <div class="mb-3">
+        <input type="file" name="image" id="" class="form-control" placeholder="Home Data image">
+    </div>
+    <div class="mb-3">
+        <input type="text" name="description" class="form-control" value="{{ home_data.description }}">
+    </div>
+    <div class="mb-3">
+        <input type="submit" value="Update Home Data" class="btn btn-warning">
+    </div>
+
+{% endblock %}

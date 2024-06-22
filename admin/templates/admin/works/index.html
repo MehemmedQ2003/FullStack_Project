@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Work Datas</h2>
+<a href="{{ url_for('admin.works.add') }}" class="btn btn-success mb-3">Add Work Data</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Detail</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if works %}
+            {% for work in works %}
+            <tr>
+                <td>{{ work.id }}</td>
+                <td>{{ work.title }}</td>
+                <td> 
+                    <img src="{{ url_for('app.static', filename='uploads/' + work.image) }}" style="height: 50px;">
+                </td>
+                <td>{{ work.detail }}</td>
+                <td>
+                    <a href="{{ url_for('admin.works.update', id=work.id) }}" class="btn btn-warning">Update</a>
+                    <a href="{{ url_for('admin.works.delete', id=work.id) }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

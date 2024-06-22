@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Info Datas</h2>
+<a href="{{ url_for('admin.info.add') }}" class="btn btn-success mb-3">Add Info Data</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Content</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if infos %}
+            {% for info in infos %}
+            <tr>
+                <td>{{ info.id }}</td>
+                <td> 
+                    <img src="{{ url_for('app.static', filename='uploads/' + info.image) }}" style="height: 50px;">
+                </td>
+                <td>{{ info.content | safe }}</td>
+                <td>
+                    <a href="{{ url_for('admin.info.update', id=info.id) }}" class="btn btn-warning">Update</a>
+                    <a href="{{ url_for('admin.info.delete', id=info.id) }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

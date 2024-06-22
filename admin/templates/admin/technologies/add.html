@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add Technolgies</h2>
+
+<form action="{{ url_for('admin.technologies.add') }}" method="post" enctype="multipart/form-data">
+
+    {{ ckeditor.load(pkg_type="full") }}
+
+    <div class="mb-3">
+        {{ technologyForm.title(class_="form-control my-3", placeholder="Technolgies Title")}}
+    </div>
+    <div class="mb-3">
+        {{ technologyForm.image(class_="form-control my-3", placeholder="Technolgies Image")}}
+    </div>
+    <div class="mb-3">
+        {{ technologyForm.content(class_="form-control my-3", placeholder="Technolgies Content")}}
+    </div>
+    <div class="mb-3">
+        {{ technologyForm.submit(class_="btn btn-success", value="Add Info Data")}}
+    </div>
+
+</form>
+
+{% endblock %}

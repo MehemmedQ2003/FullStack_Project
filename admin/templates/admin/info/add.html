@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add Info Data</h2>
+
+<form action="{{ url_for('admin.info.add') }}" method="post" enctype="multipart/form-data">
+
+    {{ ckeditor.load(pkg_type="full") }}
+
+    <div class="mb-3">
+        {{ infoForm.image(class_="form-control my-3", placeholder="Info image")}}
+    </div>
+    <div class="mb-3">
+        {{ infoForm.content(class_="form-control my-3", placeholder="Info content")}}
+    </div>
+    <div class="mb-3">
+        {{ infoForm.submit(class_="btn btn-success", value="Add Info Data")}}
+    </div>
+
+</form>
+
+{% endblock %}

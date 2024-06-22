@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add Contact Information</h2>
+
+<form method="POST" action="{{ url_for('admin.contact.add') }}" enctype="multipart/form-data">
+
+    {{ ckeditor.load(pkg_type="full") }}
+
+
+    <div class="mb-3">
+        {{ contactForm.title(class_="form-control my-3", placeholder="Contact title")}}
+    </div>
+    <div class="mb-3">
+        {{ contactForm.country(class_="form-control my-3", placeholder="Country name")}}
+    </div>
+    <div class="mb-3">
+        {{ contactForm.city(class_="form-control my-3", placeholder="City name")}}
+    </div>
+    <div class="mb-3">
+        {{ contactForm.address(class_="form-control my-3", placeholder="Address")}}
+    </div>
+    <div class="mb-3">
+        {{ contactForm.address_link(class_="form-control my-3", placeholder="Address link")}}
+    </div>
+    <div class="mb-3">
+        {{ contactForm.phone(class_="form-control my-3", placeholder="Phone number")}}
+    </div>
+    <div class="mb-3">
+        {{ contactForm.email(class_="form-control my-3", placeholder="Email")}}
+    </div>
+    <div class="mb-3">
+        {{ contactForm.submit(class_="btn btn-success", value="Add Contact Information")}}
+    </div>
+
+</form>
+
+{% endblock %}

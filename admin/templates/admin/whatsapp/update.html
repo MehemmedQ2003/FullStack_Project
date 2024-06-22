@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Update whatsapp Number</h2>
+
+<form method="POST" action="{{ url_for('admin.whatsapp.update', id=whatsappNum.id) }}" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <input type="text" name="name" class="form-control" value="{{ whatsappNum.name }}">
+    </div>
+    <div class="mb-3">
+        <input type="text" name="number" class="form-control" value="{{ whatsappNum.number }}">
+    </div>
+    <div class="mb-3">
+        <input type="submit" value="Update whatsapp Number" class="btn btn-warning">
+    </div>
+
+{% endblock %}

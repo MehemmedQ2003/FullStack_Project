@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Technology Datas</h2>
+<a href="{{ url_for('admin.technologies.add') }}" class="btn btn-success mb-3">Add Info Data</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Image</th>
+            <!-- <th>Content</th> -->
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if technologies %}
+            {% for technology in technologies %}
+            <tr>
+                <td>{{ technology.id }}</td>
+                <td>{{ technology.title }}</td>
+                <td> 
+                    <img src="{{ url_for('app.static', filename='uploads/' + technology.image) }}" style="height: 50px;">
+                </td>
+                <!-- <td>{{ technology.content | safe }}</td> -->
+                <td>
+                    <a href="{{ url_for('admin.technologies.update', id=technology.id) }}" class="btn btn-warning">Update</a>
+                    <a href="{{ url_for('admin.technologies.delete', id=technology.id) }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

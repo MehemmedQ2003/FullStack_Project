@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Whatsapp Number</h2>
+<a href="{{ url_for('admin.whatsapp.add') }}" class="btn btn-success mb-3">Add Whatsapp Number</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for whatsappNum in whatsappNums %}
+        <tr>
+            <td>{{ whatsappNum.id }}</td>
+            <td>{{ whatsappNum.name }}</td>
+            <td>{{ whatsappNum.number }}</td>
+            <td>
+                <a href="{{ url_for('admin.whatsapp.update', id=whatsappNum.id) }}" class="btn btn-warning">Update</a>
+                <a href="{{ url_for('admin.whatsapp.delete', id=whatsappNum.id) }}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

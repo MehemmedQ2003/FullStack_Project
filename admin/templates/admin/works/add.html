@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add Works</h2>
+
+<form action="{{ url_for('admin.works.add') }}" method="post" enctype="multipart/form-data">
+
+    {{ ckeditor.load(pkg_type="full") }}
+
+    <div class="mb-3">
+        {{ workForm.title(class_="form-control my-3", placeholder="Work Title")}}
+    </div>
+    <div class="mb-3">
+        {{ workForm.image(class_="form-control my-3", placeholder="Work Image")}}
+    </div>
+    <div class="mb-3">
+        {{ workForm.detail(class_="form-control my-3", placeholder="Work Detail")}}
+    </div>
+    <div class="mb-3">
+        {{ workForm.submit(class_="btn btn-success", value="Add Work Data")}}
+    </div>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>TEVHID AI Tanıtım</title>
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta content="" name="keywords" />
+    <link rel="favicon" href="/img/logo/favicon.jpg" />
+    <meta
+      content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      name="viewport"
+    />
+    <link rel="shortcut icon" href="./img/logo/favicon.jpg" />
+    <!-- style start -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link rel="shortcut icon" href="./img/bpxl.png" type="image/x-icon" />
+    <link
+      href="{{ url_for('app.static', filename='css/add.css') }}"
+      media="all"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{{ url_for('app.static', filename='css/style.css') }}"
+      media="all"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- style end -->
+    <!-- google fonts start -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900%7CMontserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+
+    <style>
+      @media (min-width: 1921px) {
+        .main-container {
+          width: 100vw;
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
+        }
+
+        #news,
+        #portfolio,
+        #about,
+        #contact {
+          height: 100vh;
+        }
+
+        #about {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+        }
+      }
+
+      body {
+        position: relative;
+      }
+      header {
+        position: fixed;
+      }
+    </style>
+
+    <!-- google fonts end -->
+  </head>
+  <body cz-shortcut-listen="true">
+    <div class="main-container">
+      <!-- preloader start -->
+      <div class="preloader-bg" style="display: none"></div>
+      <div id="preloader" style="display: none">
+        <div id="preloader-status">
+          <div class="preloader-position loader">
+            <span></span>
+          </div>
+        </div>
+      </div>
+      <header class="scrolled">
+        <div class="containerheader">
+          <label class="hamburger">
+            <input type="checkbox" />
+            <svg viewBox="0 0 32 32">
+              <path
+                class="line line-top-bottom"
+                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+              ></path>
+              <path class="line" d="M7 16 27 16"></path>
+            </svg>
+          </label>
+          <div class="mobile-menu-icon">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+          <nav>
+            <ul class="menu">
+              <li>
+                <a href="#home" class="">Home</a>
+              </li>
+              <li>
+                <a href="#about" class="">Info</a>
+              </li>
+              <li>
+                <a href="#portfolio">Works</a>
+              </li>
+              <li>
+                <a href="#technology">Technology</a>
+              </li>
+              <li>
+                <a href="#contact">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <div class="sliderbpx" id="home">
+        <!-- listbpx itembpxs -->
+        <div class="listbpx">
+          {% for index, home_data in enumerate(home_datas) %}
+          <!-- Tekrarlanan bolumler -->
+          <div class="itembpx {% if index == 0 %} active {% endif %}">
+            <picture>
+              <img
+                src="{{ url_for('app.static', filename='uploads/' + home_data.image) }}"
+                alt="..."
+              />
+              <source
+                media="(min-width: 100px)"
+                srcset="{{ url_for('app.static', filename='uploads/' + home_data.image) }}"
+              />
+              <source
+                media="(min-width: 650px)"
+                srcset="{{ url_for('app.static', filename='uploads/' + home_data.image) }}"
+              />
+              <source
+                media="(min-width: 465px)"
+                srcset="{{ url_for('app.static', filename='uploads/' + home_data.image) }}"
+              />
+            </picture>
+            <div class="contentbpx">
+              <h2>{{ home_data.title }}</h2>
+              <p style="margin-bottom: 20px">{{ home_data.description }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <!-- button arrows -->
+        <div class="arrowsbpx" style="opacity: 0">
+          <button id="prevbpx">&lt;</button>
+          <button id="nextbpx">&gt;</button>
+        </div>
+      </div>
+      <!-- home end  -->
+      <!-- about start -->
+
+      <section id="about">
+        <div class="inner-divider"></div>
+        <div class="inner-divider"></div>
+        <div class="container sections headline">
+          <div class="dots">
+            <div class="the-dots"></div>
+          </div>
+          <div class="dots-reverse">
+            <div class="the-dots"></div>
+          </div>
+          <div class="row">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <div>
+                <section class="dotssection">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </section>
+                <section class="dotssection">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </section>
+              </div>
+              <ul style="display: flex">
+                <li class="titleletter">I</li>
+                <li class="titleletter">N</li>
+                <li class="titleletter">F</li>
+                <li class="titleletter">O</li>
+              </ul>
+              <div>
+                <section class="dotssection">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </section>
+                <section class="dotssection">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </section>
+              </div>
+            </div>
+
+            {% for info in infos%}
+                <div class="about-container" style="display: flex; align-items: center; justify-content: center; gap: 30px; margin-top: 60px; padding: 0 20px;">
+                    <div class="about-left" style="position: relative">
+                        <p>
+                            {{ info.content | safe }}
+                        </p>
+                    </div>
+                    <div class="about-right">
+                        <img src="{{ url_for('app.static', filename='uploads/' + info.image) }}" alt="" />
+                    </div>
+                </div>
+            {% endfor %}
+            
+
+            <div class="inner-divider-large"></div>
+          </div>
+          <!-- <div class="inner-divider"></div> -->
+        </div>
+      </section>
+      <!-- about end -->
+      <!-- portfolio start -->
+
+      <section id="portfolio" class="carousel sections next">
+        <div class="inner-divider"></div>
+        <div class="container sections">
+          <div class="col-lg-12">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <div>
+                <section class="dotssection">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </section>
+                <section class="dotssection">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </section>
+              </div>
+              <ul style="display: flex">
+                <li class="titleletter">W</li>
+                <li class="titleletter">O</li>
+                <li class="titleletter">R</li>
+                <li class="titleletter">K</li>
+                <li class="titleletter">S</li>
+              </ul>
+              <div>
+                <section class="dotssection">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </section>
+                <section class="dotssection">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="list">
+
+          {% for work in works %}
+            <div class="item">
+                <img src="{{ url_for('app.static', filename='uploads/' + work.image) }}" onclick="window.open(this.src)" />
+                <div class="introduce">
+                <div class="title">{{ work.title }}</div>
+                <button class="seeMore">details</button>
+                </div>
+                <div class="detail">
+                <div class="title">{{ work.title }}</div>
+                <div class="specifications">
+                    <p>
+                    {{ work.detail }}
+                    </p>
+                </div>
+                </div>
+            </div>
+          {% endfor %}
+
+        </div>
+        <div class="arrows">
+          <button id="prev" style="pointer-events: auto">&lt;</button>
+          <button id="next" style="pointer-events: auto">&gt;</button>
+          <button id="back">back</button>
+        </div>
+      </section>
+      <!-- portfolio end -->
+      <!-- contact start -->
+      <section id="technology">
+        <div class="inner-divider"></div>
+        <div class="inner-divider"></div>
+
+        <div class="container sections headline">
+          <div class="dots">
+            <div class="the-dots"></div>
+          </div>
+          <div class="dots-reverse">
+            <div class="the-dots"></div>
+          </div>
+          <div class="inner-divider-half"></div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div>
+                  <section class="dotssection">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </section>
+                  <section class="dotssection">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </section>
+                </div>
+                <ul style="display: flex">
+                  <li class="titleletter">T</li>
+                  <li class="titleletter">E</li>
+                  <li class="titleletter">C</li>
+                  <li class="titleletter">H</li>
+                  <li class="titleletter">N</li>
+                  <li class="titleletter">O</li>
+                  <li class="titleletter">L</li>
+                  <li class="titleletter">O</li>
+                  <li class="titleletter">G</li>
+                  <li class="titleletter">Y</li>
+                </ul>
+                <div>
+                  <section class="dotssection">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </section>
+                  <section class="dotssection">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+
+            {% for technology in technologies %}
+                <div style="margin-bottom: 30px" class="chipshowpartner">
+                    <div class="chipshow-left" style="background-image: url('{{ url_for('app.static', filename='uploads/' ~ technology.image) }}');"></div>
+                    <div class="chipshow-right">
+                    <h1 class="chipshow-title">
+                        {{ technology.title }}
+                    </h1>
+                    <p class="chipshow-desc">
+                        {{ technology.content | safe }}
+                    </p>
+                    </div>
+                </div>
+            {% endfor %}
+
+        <!-- contact start -->
+      </section>
+      <section id="contact">
+        <div class="inner-divider"></div>
+        <div class="inner-divider"></div>
+
+        <div class="container sections headline">
+          <div class="dots">
+            <div class="the-dots"></div>
+          </div>
+          <div class="dots-reverse">
+            <div class="the-dots"></div>
+          </div>
+          <div class="inner-divider-half"></div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div>
+                  <section class="dotssection">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </section>
+                  <section class="dotssection">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </section>
+                </div>
+                <ul style="display: flex">
+                  <li class="titleletter">C</li>
+                  <li class="titleletter">O</li>
+                  <li class="titleletter">N</li>
+                  <li class="titleletter">T</li>
+                  <li class="titleletter">A</li>
+                  <li class="titleletter">C</li>
+                  <li class="titleletter">T</li>
+                </ul>
+                <div>
+                  <section class="dotssection">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </section>
+                  <section class="dotssection">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </section>
+                </div>
+              </div>
+              <div class="inner-divider"></div>
+              <div class="contact-container"></div>
+            </div>
+          </div>
+
+
+          <!-- Tekrarlanan setirler -->
+
+        <div class="row location_info" style=" margin-top: 30px; display: flex; justify-content: center; align-items: center; padding: 20px; flex-wrap: wrap; " >
+            {% for contact in contacts %}
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 colorful-border-animated" style="margin: 10px; text-align: left; padding: 10px" >
+                    <h1 class="location">{{ contact.country }}, {{ contact.city }}</h1>
+                    <div class="section-txt-contact" style="display: flex; flex-direction: column" >
+                        <a target="_blank" style="margin-top: 10px; color: white" href="{{contact.address_link}}" >
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>{{ contact.address }}, {{ contact.city }}, {{ contact.country }}</span>
+                        </a>
+                        <a style=" margin-top: 10px; display: flex; align-items: center; gap: 5px; color: white; " href="tel:{{ contact.phone }}" >
+                            <i class="fa-solid fa-phone"></i>{{ contact.phone }}
+                        </a>
+                    </div>
+                    <div class="post-email-title" style="margin-top: 10px">
+                        <a style=" display: flex; align-items: center; gap: 5px; color: white; " class="email" href="mailto:{{ contact.email }}" >
+                            <i class="fa-solid fa-envelope"></i>{{ contact.email }}
+                        </a>
+                    </div>
+                </div> 
+            {% endfor %}
+        </div>
+            <!-- Tekrarlanan setirler -->
+          </div>
+        </div>
+
+        <div class="inner-divider-large"></div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div
+              style="margin-bottom: 10px; font-size: 20px"
+              class="copyrbight"
+            >
+              TEVHID AI Tanıtım ©
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              All rights reserved
+            </div>
+          </div>
+        </div>
+        <!-- <div class="inner-divider-half"></div> -->
+      </section>
+      <a href="https://wa.me/{{ whatsappNum.number|replace(' ', '') }}" class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float"></i>
+      </a>
+      <!-- contact end -->
+      <!-- scripts start -->
+    </div>
+    <script src="{{ url_for('app.static', filename='js/add.js') }}"></script>
+    <script src="{{ url_for('app.static', filename='js/main.js') }}"></script>
+    <!-- scripts end -->
+  </body>
+</html>
